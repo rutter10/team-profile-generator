@@ -7,37 +7,35 @@ const choices = [
     'Finish' 
 ]
 
-inquirer
-.prompt([{
-    type: 'input',
-    message: 'Enter Team Manager\'s Name',
-    name: 'manager'
-},
-{
-    type: 'input',
-    message: 'Enter Employee ID Number',
-    name: 'badge'
-},
-{
-    type: 'input',
-    message: 'Enter Email Address',
-    name: 'email'
-},
-{
-    type: 'input',
-    message: 'Enter Office Number',
-    name: 'office'
-}])
 
-// .then can go here.
 
-function teamMember(){
+function manager(){
     inquirer
     .prompt([{
+        type: 'input',
+        message: 'Enter Team Manager\'s Name',
+        name: 'manager'
+    },  
+    {
+        type: 'input',
+        message: 'Enter Employee ID Number',
+        name: 'badge'
+    },  
+    {
+        type: 'input',
+        message: 'Enter Email Address',
+        name: 'email'
+    },
+    {
+        type: 'input',
+        message: 'Enter Office Number',
+        name: 'office'
+    },
+    {
         type: 'list',
         message: 'Choose team member to add, by their role',
-        name: 'title',
-        choises: ['Engineer', 'Intern', 'Finish']
+        choices: ['Engineer', 'Intern', 'Finish'],
+        name: 'title'
     },
     {    
         type: 'input',
@@ -54,7 +52,7 @@ function teamMember(){
         message: 'Enter Employee\'s Email',
         name: 'employeeEmail'
     }])
-    .then(function({name, id, employeeEmail}){
+    .then(function({name, title, id, employeeEmail}){
         let info = ''
         if (title === 'Engineer') {
             info = 'GitHub Username'
@@ -70,4 +68,7 @@ function teamMember(){
             name: 'info'
         }])
     })
+// .then can go here w/html
 }
+
+manager()
